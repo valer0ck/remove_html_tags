@@ -22,10 +22,40 @@ SECRET_KEY = ')=n&(zn8q_6^(50j6p=xd8s!ewj!mm%k%c*s_xcgwu4+k+!kfd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = []
 
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            # TEMPLATE_DIRS
+            os.sep.join([os.path.dirname(os.path.dirname(__file__)), 'template', 'home'],),
+        ],
+        'OPTIONS': {
+            'context_processors': [
+                # TEMPLATE_CONTEXT_PROCESSORS
+                'django.contrib.auth.context_processors.auth',
+
+                # Required by allauth template tags
+                'django.template.context_processors.request',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+
+            ],
+            # TEMPLATE_DEBUG
+            'debug': True,
+            'loaders': [
+                # TEMPLATE_LOADERS
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader'
+            ]
+        },
+    },
+]
 
 # Application definition
 
@@ -36,6 +66,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'remove_html_tags.tests',
 )
 
 MIDDLEWARE_CLASSES = (

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>remove template tags</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+  <p>{{content}}</p>
+  <p>{{content |striptags }}</p>
+  <p>{{content | remove_html_tags:"h3" |striptags }}</p>
+  <p>{{content | remove_html_tags:"p" |striptags }}</p>
+  <p>{{content | remove_html_tags:"h3, p" |striptags }}</p>
+</body>
+</html>
